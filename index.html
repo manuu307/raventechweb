@@ -6,8 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RavenTech</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animation.css">
 </head>
 <body>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let options = {
+              root: null,
+              rootMargin: "-250px -50px",
+              threshold: 0.05
+            };
+            let observer = new IntersectionObserver(beTouching, options);
+            document.querySelectorAll(".object").forEach(obj => {
+              observer.observe(obj);
+              //console.log("watching", p.textContent);
+            });
+          });
+          function beTouching(entries, ob) {
+            //entries all 30 paragraphs
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                console.log("intersecting");
+                console.log(entry.target);
+                console.log(entry.time, entry.intersectionRatio);
+                entry.target.classList.add("fade-in");
+                entry.target.classList.remove("invisible");
+                ob.unobserve(entry.target);
+              } else {
+                entry.target.classList.add("invisible");
+              }
+            });
+        }
+            </script>
     <nav class="nav-menu">
         <img src="./logoficticio.png" style="width: 30px;" alt="Logo">
         <ul id="menu-ul">
@@ -15,10 +45,10 @@
             <li><a href="">About</a></li>
             <li><a href="">Contact</a></li>
         </ul>
-        <div id="burger" class="burger" onclick="burger(true)">
-            <div class="line-1"></div>
-            <div class="line-2"></div>
-            <div class="line-3"></div>
+        <div id="burger" class="burger" onmouseover="hoverBurger()" onclick="burger(true)">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
         </div>
     </nav>
     <script>
@@ -59,31 +89,24 @@
     </div>
 
     <div class="banner">
-    <div class="banner-figures">
-        <div class="circle"></div>
-        <div class="parallelogram"></div>
-        <div class="parallelogram"></div>
-    </div>
-    <div class="banner-p">
-        <h3>Welcome to RavenTech!</h3>
-        <p>Nice to meet you.</p>
-    </div>
-    <div class="figures2">
-            <div class="emptycircle"></div>
-            
-            <div class="emptyparallelogram"></div>
+        <div class="matrix"></div>
+    <div class="banner-p fade-in">
+        <div class="banner-figures">
+            <div class="circle"></div>
+            <div class="parallelogram"></div>
+            <div class="parallelogram"></div>
+        </div>
+        <h3 class="div404" style="font-size: 5vw;">Welcome to <strong style="color: #8825f8;">RavenTech!</strong></h3>
+        <p style="font-size: large;color: grey;">Nice to meet you.</p>
     </div>
     </div>
     <div class="index">
         
     <div class="division">
         <div class="subdivision">
-            <div class="parallelogram">
-            <img style="z-index: 1;opacity: 1;" src="./example2.jfif" width="600" alt="Image">
+            <img class="object invisible" style="border: 2px solid white;" src="./example2.jfif" width="700" alt="Image">
         </div>
-        </div>
-        <div class="subdivision">
-            
+        <div class="subdivision object invisible">
             <p>
             Lorem ipsum dolor 
             sit amet consectetur adipisicing elit. 
@@ -94,22 +117,26 @@
         </div>
     </div>
 
-    <div class="division">
-        <div class="subdivision">
-            <p>
+    <div class="division" style="background-color: #8825f8;">
+        <div class="subdivision" style="flex-direction: column;">
+            <h3 class="object invisible" style="color: white;">Cotiza tu web con nosotros!</h3>
+            <p class="object invisible" style="color: white;">
                 Lorem ipsum dolor 
                 sit amet consectetur adipisicing elit. 
                 Quos iure porro, ipsam a laudantium error 
                 tempore ullam libero odit alias nisi iusto incidunt, 
                 similique exercitationem culpa labore numquam voluptates quisquam.
-                </p>
-            
-        </div>
-        <div class="subdivision">
-            <img src="./example1.png" width="600" alt="Image">
+            </p><br>
+            <button id="cotizar" class="btn calltoaction fade-in" onmouseover="callToAction()">Cotizar web</button>
+            <script>
+                function callToAction() {
+                    document.getElementById("cotizar").classList.remove("fade-in")
+                    document.getElementById("cotizar").classList.add("links")
+                }
+            </script>
         </div>
     </div>
-
 </div>
+
 </body>
 </html>
