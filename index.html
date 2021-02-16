@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RavenTech</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="nav-menu">
+        <img src="./logoficticio.png" style="width: 30px;" alt="Logo">
+        <ul id="menu-ul">
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+        <div id="burger" class="burger" onclick="burger(true)">
+            <div class="line-1"></div>
+            <div class="line-2"></div>
+            <div class="line-3"></div>
+        </div>
+    </nav>
+    <script>
+        function burger(value) {
+            const cross = document.getElementById("cross");
+            const burger = document.getElementById("burger");
+            const menu = document.getElementById("menu");
+            if (value == true) {
+                menu.classList.remove("inactive");
+                menu.classList.add("slide-in");
+                cross.classList.add("burger")
+                cross.classList.remove("inactive")
+                burger.classList.add("inactive")
+                burger.classList.remove("burger")
+                document.getElementById("menu-ul").className = "invisible"
+                document.body.style.overflowY = "hiden"
+            } else {
+                menu.classList.remove("slide-in");
+                menu.classList.add("inactive");
+                burger.classList.add("burger")
+                burger.classList.remove("inactive")
+                cross.classList.add("inactive")
+                cross.classList.remove("burger")
+                document.getElementById("menu-ul").classList.remove("invisible")
+                document.getElementById("menu-ul").classList.add("fade-in")
+            }
+        }
+    </script>
+    <div id="menu" class="menu inactive">
+        <div id="cross" class="cross inactive" onclick="burger(false)">
+            <div><strong style="color: white;">X</strong></div>
+        </div>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="banner">
+    <div class="banner-figures">
+        <div class="circle"></div>
+        <div class="parallelogram"></div>
+        <div class="parallelogram"></div>
+    </div>
+    <div class="banner-p">
+        <h3>Welcome to RavenTech!</h3>
+        <p>Nice to meet you.</p>
+    </div>
+    <div class="figures2">
+            <div class="emptycircle"></div>
+            
+            <div class="emptyparallelogram"></div>
+    </div>
+    </div>
+    <div class="index">
+        
+    <div class="division">
+        <div class="subdivision">
+            <div class="parallelogram">
+            <img style="z-index: 1;opacity: 1;" src="./example2.jfif" width="600" alt="Image">
+        </div>
+        </div>
+        <div class="subdivision">
+            
+            <p>
+            Lorem ipsum dolor 
+            sit amet consectetur adipisicing elit. 
+            Quos iure porro, ipsam a laudantium error 
+            tempore ullam libero odit alias nisi iusto incidunt, 
+            similique exercitationem culpa labore numquam voluptates quisquam.
+            </p>
+        </div>
+    </div>
+
+    <div class="division">
+        <div class="subdivision">
+            <p>
+                Lorem ipsum dolor 
+                sit amet consectetur adipisicing elit. 
+                Quos iure porro, ipsam a laudantium error 
+                tempore ullam libero odit alias nisi iusto incidunt, 
+                similique exercitationem culpa labore numquam voluptates quisquam.
+                </p>
+            
+        </div>
+        <div class="subdivision">
+            <img src="./example1.png" width="600" alt="Image">
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
