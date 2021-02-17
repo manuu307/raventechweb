@@ -64,6 +64,28 @@
     -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
 }
+.slide-in{
+  animation-name: slidein;
+  animation-duration: 1s;
+}
+.slide-out{
+  animation-name: slideout;
+  animation-duration: 1s;
+}
+.move-out{
+  animation-name: moveout;
+  animation-duration: 1s;
+}
+.marca-dor{
+  animation-name: marcador;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+.input{
+  animation-name: input;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
   @keyframes links {
     0%  {border-left:  rgb(255, 255, 255) 2px solid; border-top:  rgba(255, 255, 255, 0) 2px solid; 
             border-right:  rgba(255, 255, 255, 0) 2px solid; border-bottom:  rgba(255, 255, 255, 0) 2px solid;}
@@ -96,3 +118,27 @@
     0% {opacity:0;}
     100% {opacity:1;}
     }
+@keyframes input {
+    0% {opacity:0;background-color:white;}
+    100% {opacity:1;background-color:white;}
+    }
+
+@keyframes slidein {
+    0% {transform: translateX(100%);}
+    100% {transform: translateX(0%);}
+}
+@keyframes slideout {
+  0% {transform: translateX(0%);}
+  100% {transform: translateX(100%);}
+}
+@keyframes moveout {
+  0% {transform: translateX(0%);}
+  100% {transform: translateX(-5%);}
+}
+@keyframes marcador {
+  0% {background-color: black;color: white;transform: translateY(0%);}
+
+  50%{background-color: black;color: #004AAD;transform: translateY(-10%);}
+
+  100% {background-color: black;color: white;transform: translateY(0%);}
+}

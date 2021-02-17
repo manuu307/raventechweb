@@ -39,7 +39,8 @@
         }
             </script>
     <nav class="nav-menu">
-        <img src="./logoficticio.png" style="width: 30px;" alt="Logo">
+        <h1 style="color: white;">RAVEN</h1>
+        <!-- <img src="./logoficticio.png" style="width: 30px;" alt="Logo"> -->
         <ul id="menu-ul">
             <li><a href="">Home</a></li>
             <li><a href="">About</a></li>
@@ -52,21 +53,29 @@
         </div>
     </nav>
     <script>
+        function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
         function burger(value) {
             const cross = document.getElementById("cross");
             const burger = document.getElementById("burger");
             const menu = document.getElementById("menu");
             if (value == true) {
+                menu.classList.remove("slide-out");
                 menu.classList.remove("inactive");
                 menu.classList.add("slide-in");
                 cross.classList.add("burger")
                 cross.classList.remove("inactive")
                 burger.classList.add("inactive")
                 burger.classList.remove("burger")
+                document.getElementById("move-out").classList.add("move-out")
+                document.getElementById("move-out").style.marginRight="35%"
                 document.getElementById("menu-ul").className = "invisible"
                 document.body.style.overflowY = "hiden"
             } else {
                 menu.classList.remove("slide-in");
+                menu.classList.add("slide-out")
+                sleep(2000)
                 menu.classList.add("inactive");
                 burger.classList.add("burger")
                 burger.classList.remove("inactive")
@@ -74,6 +83,7 @@
                 cross.classList.remove("burger")
                 document.getElementById("menu-ul").classList.remove("invisible")
                 document.getElementById("menu-ul").classList.add("fade-in")
+                
             }
         }
     </script>
@@ -82,31 +92,29 @@
             <div><strong style="color: white;">X</strong></div>
         </div>
         <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="">Home</a><br><div></div></li>
+            <li><a href="">About</a><br><div></div></li>
+            <li><a href="">Contact</a><br><div></div></li>
         </ul>
     </div>
 
     <div class="banner">
         <div class="matrix"></div>
-    <div class="banner-p fade-in">
+    <div id="move-out" class="banner-p fade-in">
         <div class="banner-figures">
             <div class="circle"></div>
             <div class="parallelogram"></div>
             <div class="parallelogram"></div>
         </div>
-        <h3 class="div404" style="font-size: 5vw;">Welcome to <strong style="color: #8825f8;">RavenTech!</strong></h3>
-        <p style="font-size: large;color: grey;">Nice to meet you.</p>
+        <h3 class="div404" style="font-size: 5vw;color: black;width: 100%;">Welcome to <strong style="color: white;"> Raven...</strong></h3>
+        <div class="marca-dor" style="display: flex;flex-direction: row;align-items: center;"><p style="font-size: large;">Print("Nice to meet you.")</p><div class="input" style="background-color: #004AAD;width: 10px;height: 20px;"></div></div>
     </div>
     </div>
     <div class="index">
-        
     <div class="division">
+        <h1>Web developing</h1>
         <div class="subdivision">
             <img class="object invisible" style="border: 2px solid white;" src="./example2.jfif" width="700" alt="Image">
-        </div>
-        <div class="subdivision object invisible">
             <p>
             Lorem ipsum dolor 
             sit amet consectetur adipisicing elit. 
@@ -117,7 +125,7 @@
         </div>
     </div>
 
-    <div class="division" style="background-color: #8825f8;">
+    <div class="division" style="background-color: #004AAD;">
         <div class="subdivision" style="flex-direction: column;">
             <h3 class="object invisible" style="color: white;">Cotiza tu web con nosotros!</h3>
             <p class="object invisible" style="color: white;">
