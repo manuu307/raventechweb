@@ -74,10 +74,11 @@ body{
 .matrix{
     position: absolute;
     right: 0;
-    background-image: url('./matrix1.gif');
+    background-image: url('./matrix2.gif');
     background-color: #004AAD;
-    background-size: contain;
-    opacity: 1 ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.5 ;
     width: 100%;
     height: 80vh;
     z-index: -1;
@@ -136,6 +137,32 @@ li{list-style: none;}
 }
 .cross{z-index: 2;width: 100%;}
 .cross div{padding: 2rem;text-align: right;margin-top: 2.5rem;width: 82%;}
+
+.float-menu{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 3rem;
+}
+.float-menu:hover{animation-name: float;animation-iteration-count: infinite;}
+.float-arrow{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    margin-left: 1rem;
+}
+.float-coffee{
+    align-items: center;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    top: 0;
+    right: 0;
+    margin-top: 5rem;
+
+}
+.float-coffee h3:hover{border-bottom: 1px solid white;}
 /* INDEX *************************************/
 .index{
     margin-top: 1rem;
@@ -175,6 +202,7 @@ li{list-style: none;}
         align-items: center;
         height: 120vh;
     }
+    .title{margin-bottom: -2rem;}
     .subdivision{
         margin-top: auto;
         margin-bottom: auto;
@@ -219,11 +247,11 @@ li{list-style: none;}
   }
   /* Track */
   ::-webkit-scrollbar-track {
-    background: white; 
+    background: black; 
   }
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: black; 
+    background: white; 
   }
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
