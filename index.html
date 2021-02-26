@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RavenTech</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="animation.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/animation.css">
 </head>
 <body>
     <script>
@@ -14,7 +14,7 @@
         document.addEventListener("DOMContentLoaded", () => {
             let options = {
               root: null,
-              rootMargin: "-250px -50px",
+              rootMargin: "-100px -100px",
               threshold: 0.05
             };
             let observer = new IntersectionObserver(beTouching, options);
@@ -28,7 +28,11 @@
                 console.log("intersecting");
                 console.log(entry.target);
                 console.log(entry.time, entry.intersectionRatio);
-                entry.target.classList.add("fade-in");
+                if (entry.target.classList == "slide") {
+                    entry.target.classList.add("slide-in");
+                } else {
+                    entry.target.classList.add("fade-in");
+                }
                 entry.target.classList.remove("invisible");
                 ob.unobserve(entry.target);
               } else {
@@ -47,7 +51,7 @@
                 document.getElementById("float-arrow").classList.remove("invisible")
                 document.getElementById("float-arrow").classList.add("slide-in")
                 //Coffee
-                document.getElementById("float-coffee").classList.remove("invisible")
+                document.getElementById("float-coffee").classList.remove("inactive")
                 document.getElementById("float-coffee").classList.add("slide-in")
               } else {
                 //Menu
@@ -57,34 +61,34 @@
                 document.getElementById("float-arrow").classList.add("invisible")
                 document.getElementById("float-arrow").classList.remove("slide-in")
                 //Coffee
-                document.getElementById("float-coffee").classList.add("invisible")
+                document.getElementById("float-coffee").classList.add("inactive")
                 document.getElementById("float-coffee").classList.remove("slide-in")
               }
             }
             
             </script>
     <nav class="nav-menu">
-        <h1 id="logo" style="color: white;">RAVEN</h1>
+        <a href=""><h1 id="logo" style="color: white;">RAVEN</h1></a>
         <!-- <img src="./logoficticio.png" style="width: 30px;" alt="Logo"> -->
         <ul id="menu-ul">
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Sobre nosotros</a></li>
-            <li><a href="">Contacto</a></li>
+            <li><a href="" onclick="burger(false)">Inicio</a></li>
+            <li><a href="#about-us" onclick="burger(false)">Sobre nosotros</a></li>
+            <li><a href="" onclick="burger(false)">Proyectos</a></li>
+            <li><a href="#footer" onclick="burger(false)">Contacto</a></li>
         </ul>
-        <div id="burger" class="burger" onmouseover="hoverBurger()" onclick="burger(true)">
+        <div id="burger" class="burger" onmouseover="hoverBurger(true)" onmouseout="hoverBurger(false)" onclick="burger(true)">
             <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
         </div>
     </nav>
     <script>
-        function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
         function burger(value) {
             const cross = document.getElementById("cross");
             const burger = document.getElementById("burger");
             const menu = document.getElementById("menu");
+            var line2 = document.getElementById("line2");
+            var line3 = document.getElementById("line3");
             if (value == true) {
                 menu.classList.remove("slide-out");
                 menu.classList.remove("inactive");
@@ -97,10 +101,11 @@
                 document.getElementById("move-out").style.marginRight="35%"
                 document.getElementById("menu-ul").className = "invisible"
                 document.body.style.overflowY = "hiden"
+                line2.style.width="50%"
+                line3.style.width="25%"
             } else {
                 menu.classList.remove("slide-in");
                 menu.classList.add("slide-out")
-                sleep(2000)
                 menu.classList.add("inactive");
                 burger.classList.add("burger")
                 burger.classList.remove("inactive")
@@ -108,7 +113,10 @@
                 cross.classList.remove("burger")
                 document.getElementById("menu-ul").classList.remove("invisible")
                 document.getElementById("menu-ul").classList.add("fade-in")
-                
+                document.getElementById("move-out").style.marginRight="auto"
+                document.getElementById("move-out").style.marginLeft="auto"
+                line2.style.width="100%"
+                line3.style.width="100%"
             }
         }
     </script>
@@ -117,52 +125,122 @@
             <div><strong style="color: white;">X</strong></div>
         </div>
         <ul>
-            <li><a href="">Inicio</a><br><div></div></li>
-            <li><a href="">Sobre nosotros</a><br><div></div></li>
-            <li><a href="">Contacto</a><br><div></div></li>
+            <li><a href="" onclick="burger(false)">Inicio</a></li>
+            <li><a href="#about-us" onclick="burger(false)">Sobre nosotros</a></li>
+            <li><a href="" onclick="burger(false)">Proyectos</a></li>
+            <li><a href="#footer" onclick="burger(false)">Contacto</a></li>
         </ul>
     </div>
 
     <div class="banner">
         <div class="matrix"></div>
-    <div id="move-out" class="banner-p fade-in">
+    <div id="move-out" class="banner-p slide-in">
         <div class="banner-figures">
-            <div class="circle"></div>
-            <div class="parallelogram"></div>
-            <div class="parallelogram"></div>
+            <div class="circle slide-in"></div>
+            <div class="parallelogram slide-in"></div>
+            <div class="parallelogram slide-in"></div>
         </div>
-        <h3 class="div404" style="font-size: 5vw;color: white;width: 100%;">Bienvenid@ a <strong style="color: white;"> Raven...</strong></h3>
+        <h1 class="div404" style="color: white;width: 100%;">Bienvenid@ a  <strong style="color: white;"> Raven...</strong></h1>
         <div class="marca-dor" style="display: flex;flex-direction: row;align-items: center;">
-            <p style="font-size: large;">Print("Es un placer!")</p><div class="input" style="background-color: #004AAD;width: 10px;height: 20px;"></div></div>
-        
-    </div>
+            <p style="font-size: large;">- Bienvenid@ a la era digital! </p><div class="input" style="background-color: #004AAD;width: 10px;height: 20px;"></div></div>
+        </div>
     </div>
     <div class="index">
-    <div class="division">
-        <h1 class="title object invisible">Desarrollo Web</h1>
-        <div class="subdivision">
-            <img class="object invisible" style="border: 2px solid white;" src="./example2.jfif" width="700" alt="Image">
-            <p class="object invisible">
-            Lorem ipsum dolor 
-            sit amet consectetur adipisicing elit. 
-            Quos iure porro, ipsam a laudantium error 
-            tempore ullam libero odit alias nisi iusto incidunt, 
-            similique exercitationem culpa labore numquam voluptates quisquam.
+
+    <div class="father">
+        <div class="division division-1">
+            <div class="subdivision object invisible">
+                <h2>¿Cómo se vé tu empresa desde <strong style="border-bottom: 2px solid white;">internet?</strong></h2>
+                <p> Hoy en día los usuarios de internet prefieren diseños <strong>Atractivos y Fáciles de utilizar.</strong><br> Los primeros 10 segundos de navegación son vitales para el nuevo cliente.</p>
+            </div>
+            <div class="subdivsion object invisible">
+                <img  src="./public/website.png"  alt="Image">
+            </div>
+        </div>  
+    </div>
+
+    <div class="father" style="background-color: #004AAD;">
+        <div id="division-2" class="division division-2">
+            <div class="subdivision object">
+                <img src="./public/responsive.gif" alt="" width="100%">
+            </div>
+            <div class="subdivision object invisible">
+                <h2 style="color: white;">Diseño  <strong style="border-bottom: 1px solid white;">Responsive!</strong></h2>
+                <p>El <strong>53% del tráfico de internet</strong> a nivel mundial proviene de <strong>SmartPhones</strong> (Teléfonos inteligentes). 
+                    Construimos sitios web y aplicaciones <strong>100% adaptables</strong> y navegables desde Celulares, tablets y computadoras de escritorio
+                    sin perder características y funcionalidades.
+                </p>
+            </div>
+        </div>
+        </div>
+
+<div id="about-us" class="father">
+    
+        <div class="special-division object invisible">
+        <div class="title">
+            <h1>Sobre nosotros:</h1>
+        </div>
+        <div class="description">
+            <p>
+                Somos un equipo formado por 2 hermanos apasionados por la tecnología. Comenzamos nuestro camino
+                en noviembre del 2019 y en Marzo del 2020 logramos realizar nuestro primer proyecto
+                para la Inmobiliaria Pallares y Asociados, quienes nos brindaron la oportunidad para desarrollar
+                su sitio web. Raven fue creado con la meta de lograr que más uruguayos puedan incorporarse al mundo
+                digital y tengan las herramientas necesarias para éste mundo que cada día se vuelve mas y mas virtual.
             </p>
         </div>
     </div>
+    
+    <div class="division division-3">
+        <div class="object invisible subdivision">
+            <img src="./public/manu.jpg" width="400px" alt="Manu">
+            <h3>Manuel Barreiro</h3>
+            <p style="font-size: medium;">29 años de edad,
+                Egresado de Instituto Técnico de Informática.
+            </p>
+        </div>
+        <div class="object invisible santi subdivision">
+            <img src="./public/manu.jpg" width="400px" alt="Santi">
+            <h3>Santiago Cedeira</h3>
+            <p style="font-size: medium;">21 años de edad,
+                Egresado de cientifico y cursando actualmente la carrera de Ingenieria.
+            </p>
+        </div>
+    </div>
+</div>
 
-    <div id="division-2" class="division" style="background-color: #004AAD;">
-        <div class="subdivision" style="flex-direction: column;">
-            <h3 class="object invisible" style="color: white;">Cotiza tu web con nosotros!</h3>
-            <p class="object invisible" style="color: white;">
-                Lorem ipsum dolor 
-                sit amet consectetur adipisicing elit. 
-                Quos iure porro, ipsam a laudantium error 
-                tempore ullam libero odit alias nisi iusto incidunt, 
-                similique exercitationem culpa labore numquam voluptates quisquam.
-            </p><br>
-            <button id="cotizar" class="btn calltoaction object invisible" onmouseover="callToAction()">Cotizar web</button>
+<div class="father" style="background-color: rgb(224, 224, 224);">
+    <div id="division-2" class="division">
+        <div class="subdivision object invisible">
+            <h2 style="color: black;">Cotiza tu proyecto <strong style="color: #004AAD;">Gratis!</strong></h2>
+            <form action="mailto:manuu307@gmail.com"
+            method="POST"
+            enctype="multipart/form-data"
+            name="EmailForm" style="display: flex;flex-direction: column;">
+                <div class="inputs" style="text-align: left;">
+                    
+                    <div class="inputs">
+                        <label style="color: black;" for="">Nombre Completo</label><br><input type="text">
+                    </div>
+                    <div class="inputs">
+                        <label style="color: black;" for="">Email</label><br><input type="email">
+                    </div>
+                    <div class="select">
+                        <label style="color: black;" for="">Tipo de proyecto</label><br>
+                        <select name="" id="">
+                            <option value="website">Sitio web</option>
+                            <option value="webapp">Aplicación web</option>
+                            <option value="corpo-identity">Identidad corporativa</option>
+                            <option value="corpowebsite">Sitio web + Identidad corporativa</option>
+                            <option value="corpowebapp">Aplicación web + Identidad corporativa</option>
+                        </select>
+                    </div>
+                    <div class="inputs">
+                        <label style="color: black;" for="">Rubro de la empresa</label><br><input type="text" placeholder="Ej: Inmobiliaria">
+                    </div>
+                </div>
+                <input type="submit" value="Enviar">
+                </form>
             <script>
                 function callToAction() {
                     document.getElementById("cotizar").classList.remove("fade-in")
@@ -170,25 +248,84 @@
                 }
             </script>
         </div>
+        <div class="subdivision object invisible">
+            <img src="./public/figure.gif" alt="" width="100%">
+        </div>
     </div>
-</div>
-<div id="float-coffee" class="float-coffee invisible">
-    <h3>
-        <a style="text-decoration: none;color: white;" href="">> Comenzamos?</a>
+    </div>
+
+    <div class="father footer">
+    <div id="footer" class="division">
+        <div class="subdivision object invisible">
+            <form action="mailto:manuu307@gmail.com"
+            method="POST"
+            enctype="multipart/form-data"
+            name="EmailForm" style="display: flex;flex-direction: column;">
+                <div class="inputs" style="text-align: left;">
+                    <h3>Puedes comunicarte por Email aquí:</h3>
+                    <div class="inputs">
+                        <label for="">Nombre completo</label><br><input type="text">
+                    </div>
+                    <div class="inputs">
+                        <label for="">Email</label><br><input type="email">
+                    </div>
+                    <div class="inputs">
+                        <label for="">Mensaje:</label><br>
+                        <textarea name="message" rows="10" cols="30">
+                            Estoy interesad@ en...
+                        </textarea>
+                    </div>
+                </div>
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+        <div class="subdivision object invisible">
+        <div class="whatsapp">
+            <h3 style="margin-left: 2rem;margin-right: 2rem;margin-bottom: 2rem;">Por WhatsApp:</h3><br>
+            <a href="https://api.whatsapp.com/send?phone=59892447494" target="_blank" rel="noopener noreferrer"><img src="./public/whatsapp.png" alt="whastapp" height="150px"></a>
+        </div>
+        <div class="telegram">
+            <h3 style="margin-left: 2rem;margin-right: 2rem;margin-bottom: 2rem;">Por Telegram:</h3><br>
+            <a href="https://api.whatsapp.com/send?phone=59892447494" target="_blank" rel="noopener noreferrer"><img src="./public/telegram.png" alt="telegram" height="150px"></a>
+        </div>
+        </div>
+    </div>
+    </div>
+
+<div id="float-coffee" class="float-coffee inactive" >
+    <div style="display: flex;flex-direction: row;">
+    <h3 class="">
+        <a href="#footer" style="text-decoration: none;color: white;">> Comenzamos?</a>
     </h3>
-    <img src="./coffee.gif" alt="coffee" width="50px" height="30px">
+    <img src="./public/coffee.gif" alt="coffee" width="50px" height="30px">
 </div>
+</div>
+
 <div class="float-menu">
     <div style="padding: 0.8rem;background-color: #004AAD;border-radius: 60px;border: 1px solid #004AAD;" 
     id="float-burger" class="burger invisible" 
-    onmouseover="hoverBurger()" onclick="burger(true)">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
+    onmouseover="hoverBurger(true)" onmouseout="hoverBurger(false)" onclick="burger(true)">
+        <div id="line1" class="line"></div>
+        <div id="line2" class="line line-2"></div>
+        <div id="line3" class="line line-3"></div>
     </div>
 </div>
+<script>
+    function hoverBurger(input) {
+        if (input == true) {
+            document.querySelectorAll(".line-2").forEach( obj => {obj.classList.add("line2")} )
+            document.querySelectorAll(".line-3").forEach( obj => {obj.classList.add("line3")} )
+        } else {
+            document.querySelectorAll(".line-2").forEach( obj => {obj.classList.remove("line2")} )
+            document.querySelectorAll(".line-3").forEach( obj => {obj.classList.remove("line3")} )
+        }
+        
+    }
+</script>
 <div id="float-arrow" class="float-arrow float invisible">
     <a style="color: white;text-decoration: none;font-size: large;" href="#logo"><h1>ᐱ</h1></a>
+</div>
+
 </div>
 </body>
 </html>
